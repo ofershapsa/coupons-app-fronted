@@ -6,15 +6,64 @@ import { Form } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 
 
-export default class Login extends React.Component {
+function  Login(){
+  render() {
+    
+    return (
+    
+      <div className="login">
+        <h2 className="header" >Coupons App</h2>
+      
+        <div className="login-triangle"></div>
+
+    <h2 className="login-header">Log in </h2>
+
+        <form className="login-container" onSubmit={this.handleSubmit}>
+          <p>
+
+            <input type="text" placeholder="Name" onChange={e => this.handleName(e)} /></p>
+          <p><input type="password" placeholder="Password" onChange={e => this.handlePassword(e)} /></p>
+          <p>
+            <Form>
+
+              <Form.Group controlId="exampleForm.SelectCustom">
+
+
+                <Form.Control as="select" custom ref={this.inputField} onChange={e => this.handleT(e)}   >
+
+                  <option disabled>Select Type</option>
+                  <option value='ADMIN'>Admin</option>
+                  <option value='COMPANY'>Company</option>
+                  <option value='CUSTOMER'>Customer</option>
+                </Form.Control>
+
+              </Form.Group>
+            </Form>
+
+          </p>
+
+          <p><input type="submit" value="Log in" /></p>
+
+        </form>
+
+
+      </div>
+   
+    );
+
+  }
+
+
+
+}
   
-  state = {
+ /* state = {
     type: '',
     name: '',
     password: '',
     
   }
-
+*/
   constructor(props) {
     super(props);
     this.authenticated = false;
@@ -140,56 +189,9 @@ export default class Login extends React.Component {
   }
   
   
-  render() {
-    
-    return (
-    
-      <div className="login">
-        <h2 className="header" >Coupons App</h2>
-      
-        <div className="login-triangle"></div>
-
-    <h2 className="login-header">Log in </h2>
-
-        <form className="login-container" onSubmit={this.handleSubmit}>
-          <p>
-
-            <input type="text" placeholder="Name" onChange={e => this.handleName(e)} /></p>
-          <p><input type="password" placeholder="Password" onChange={e => this.handlePassword(e)} /></p>
-          <p>
-            <Form>
-
-              <Form.Group controlId="exampleForm.SelectCustom">
-
-
-                <Form.Control as="select" custom ref={this.inputField} onChange={e => this.handleT(e)}   >
-
-                  <option disabled>Select Type</option>
-                  <option value='ADMIN'>Admin</option>
-                  <option value='COMPANY'>Company</option>
-                  <option value='CUSTOMER'>Customer</option>
-                </Form.Control>
-
-              </Form.Group>
-            </Form>
-
-          </p>
-
-          <p><input type="submit" value="Log in" /></p>
-
-        </form>
-
-
-      </div>
-   
-    );
-
-  }
-
-
-
-}
-/*<Select ref={this.inputField} onChange={e=>this.handleT(e)}>
+ 
+export default Login;
+/*<Seexport default App;lect ref={this.inputField} onChange={e=>this.handleT(e)}>
     <option  disabled >--Select type--</option>
     <option value='ADMIN' >-Admin</option>
     <option value ='COMPANY'>-Company</option>
