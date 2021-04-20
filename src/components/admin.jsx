@@ -2,11 +2,12 @@ import React from "react"
 
 import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
 export default class admin extends React.Component{
+   
   handleLogout() {
     localStorage.clear();
     window.location.href = "/";
   }
-
+  
   componentDidMount(){
     const jwtToken = localStorage.getItem("authorization");
   }

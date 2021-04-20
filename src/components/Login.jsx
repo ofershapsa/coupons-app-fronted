@@ -5,14 +5,16 @@ import { Form } from 'react-bootstrap';
 //import Select from "react-bootstrap-select"
 //import { Link } from 'react-router-dom';
 
-export default class Login extends React.Component {
 
+export default class Login extends React.Component {
+  
   state = {
     type: '',
     name: '',
     password: '',
-
+    
   }
+
   constructor(props) {
     super(props);
     this.authenticated = false;
@@ -20,14 +22,14 @@ export default class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handleName = this.handleName.bind(this)
-
+    
     //   this.handleT = this.handleT(e).bind(this);
   }
-
+  
   isAuthenticated() {
-
+    
     return this.authenticated;
-
+    
   }
   
   handleSubmit(e) {
@@ -40,112 +42,114 @@ export default class Login extends React.Component {
       username: username,
       password: password,
       type: type
-
+      
     };
-
+    
     if (this.inputField.current.value === 'ADMIN') {
-
+      
       axios.post(endpoint, user_object)
-
-        .then(res => {
-          console.log(res.data);
-          localStorage.setItem("authorization", res.data.token);
-          if (res.data.token != null) {
-            this.authenticated = true;
-            console.log(this.isAuthenticated())
-            this.props.history.push(this.inputField.current.value)
-          }
-        }).catch(res => {
-          console.log(res.data);
+      
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("authorization", res.data.token);
+        if (res.data.token != null) {
+          this.authenticated = true;
+          console.log(this.isAuthenticated())
+          this.props.history.push(this.inputField.current.value)
         }
-        )
+      }).catch(res => {
+        console.log(res.data);
+      }
+      )
     }
-
+    
     if (this.inputField.current.value === 'COMPANY') {
       axios.post(endpoint, user_object)
-
-        .then(res => {
-          console.log(res.data);
-
-          localStorage.setItem("authorization", res.data.token);
-          if (res.data.token != null) {
-            this.props.history.push(this.inputField.current.value)
-          }
-        }).catch(res => {
-          console.log(res.data);
+      
+      .then(res => {
+        console.log(res.data);
+        
+        localStorage.setItem("authorization", res.data.token);
+        if (res.data.token != null) {
+          this.props.history.push(this.inputField.current.value)
         }
-        )
-
+      }).catch(res => {
+        console.log(res.data);
+      }
+      )
+      
     }
-
+    
     if (this.inputField.current.value === 'CUSTOMER') {
       axios.post(endpoint, user_object)
-
-        .then(res => {
-
-          console.log(res.data);
-          localStorage.setItem("authorization", res.data.token);
-          if (res.data.token != null) {
-            this.props.history.push(this.inputField.current.value)
-          }
-        }).catch(res => {
-          console.log(res.data);
+      
+      .then(res => {
+        
+        console.log(res.data);
+        localStorage.setItem("authorization", res.data.token);
+        if (res.data.token != null) {
+          this.props.history.push(this.inputField.current.value)
         }
-        )
-
+      }).catch(res => {
+        console.log(res.data);
+      }
+      )
+      
     }
   }
-
-
-
-
+  
+  
+  
+  
   handleT(e) {
     e.preventDefault();
     e.persist();
-
+    
     setTimeout(() => {
-
+      
       this.setState({ type: this.inputField.current.value })
       console.log(this.state.type)
     }, 0);
-
+    
   }
-
+  
   handlePassword(e) {
     e.persist();
-
+    
     setTimeout(() => {
-
+      
       this.setState({ password: e.target.value })
       console.log(this.state.password)
-
+      
     }, 0);
-
+    
   }
-
-
+  
+  
   handleName(e) {
     e.persist();
-
+    
     setTimeout(() => {
-
+      
       this.setState({ name: e.target.value })
       console.log(this.state.name)
-
+      
     }, 0);
-
-
+    
+    
   }
-
-
+  
+  
   render() {
-
+    
     return (
+    
       <div className="login">
         <h2 className="header" >Coupons App</h2>
+      
         <div className="login-triangle"></div>
 
-        <h2 className="login-header">Log in</h2>
+    <h2 className="login-header">Log in </h2>
 
         <form className="login-container" onSubmit={this.handleSubmit}>
           <p>
@@ -177,6 +181,7 @@ export default class Login extends React.Component {
 
 
       </div>
+   
     );
 
   }
