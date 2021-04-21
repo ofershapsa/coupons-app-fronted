@@ -101,7 +101,8 @@ function apiReducer(state, action) {
         }
     }
     return state;
-}
+  }
+  
 
 function useTokenApi() {
     const [state, dispatch] = useReducer(apiReducer, {isLoading: false, error: null, data: null})
@@ -109,19 +110,19 @@ function useTokenApi() {
     const endpoint = "http://localhost:8080/authenticate";
    
     useEffect(() => {
-        if (localStorage.getItem("authorization") ) {
-            history.push("/");
-        }
+      if (localStorage.getItem("authorization") ) {
+        history.push("/");
+      }
     }, [history])
-
+    
     useEffect(() => {
-        if (state.isLoading) {
-          axios.post(endpoint , { username: state.username, password: state.password, type: state.type })
-          .then(res => {
-            console.log(res.data);
-            localStorage.setItem("authorization", res.data.token);
-            if (res.data.token != null) {
-
+      if (state.isLoading) {
+        axios.post(endpoint , { username: state.username, password: state.password, type: state.type })
+        .then(res => {
+          console.log(res.data);
+          localStorage.setItem("authorization", res.data.token);
+          if (res.data.token != null) {
+            
               history.push(`/${state.type}`)
         }
   
@@ -162,16 +163,17 @@ function useTokenApi() {
         }}
         >
         <p>
-          <input type="text" placeholder="Name" ref={nameRef} />
+          <input type="text" placeholder="Name" ref={nameRef} onChange={() => console.log(nameRef.current && nameRef.current.value)} />
         </p>
         <p>
-          <input type="password" placeholder="Password" ref={pswRef} />
+          <input type="password" placeholder="Password" ref={pswRef}  onChange={() => console.log(pswRef.current && pswRef.current.value)}/>
         </p>
       
         <p>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Control as="select" custom ref={typeRef}>
+              <Form.Control as="select" custom ref={typeRef }onChange={() => console.log(typeRef.current && typeRef.current.value)} >
+
                 <option disabled>Select Type</option>
                 <option value="ADMIN">Admin</option>
                 <option value="COMPANY">Company</option>
