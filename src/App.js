@@ -7,7 +7,7 @@ import company from "./components/company.jsx";
 import customer from "./components/customer.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import admin from "./components/admin.jsx";
-import GuardedRoute from "./GuardedRoute.js";
+import GuardedRoute from "./components/GuardedRoute.js";
 
 function App() {
   return (
