@@ -117,20 +117,23 @@ function useTokenApi() {
     useEffect(() => {
         if (state.isLoading) {
           axios.post(endpoint , { username: state.username, password: state.password, type: state.type })
-          .then(resp => resp.json()).then(res => {
-            console.log("this is what I have", res)
-            
-        }).catch(res => {
-        console.log(res.data);
-      }
-      )
+          .then(res => {
+            console.log(res.data);
+            localStorage.setItem("authorization", res.data.token);
+            if (res.data.token != null) {
+              history.push(state.type)
+        }
+  
+           
+          }) . catch(err => console.log(err))
+        
         }
         if (!state.isLoading && state.data !== null) {
-            localStorage.setItem("authorization", state.data)
-          }
-        }, [state, history ])
-        
-        return {...state, dispatch}
+          localStorage.setItem("authorization", state.data)
+        }
+      }, [state, history ])
+      
+      return {...state, dispatch}
       }
       
       function Login() {
@@ -183,7 +186,7 @@ function useTokenApi() {
       </form>
     </div>
   );
-
+  
 }
 /*
 console.log(res.data);
@@ -191,24 +194,24 @@ localStorage.setItem("authorization", res.data.token);
 if (res.data.token != null) {
   history.push(this.inputField.current.value)
   */
-
-/* state = {
-  type: '',
-  name: '',
-  password: '',
-  
-}
-*/
-/*
-constructor(props) {
-  super(props);
-  this.authenticated = false;
-  this.inputField = React.createRef();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-    this.handleName = this.handleName.bind(this)
-    
-    //   this.handleT = this.handleT(e).bind(this);
+ 
+ /* state = {
+   type: '',
+   name: '',
+   password: '',
+   
+  }
+  */
+ /*
+ constructor(props) {
+   super(props);
+   this.authenticated = false;
+   this.inputField = React.createRef();
+   this.handleSubmit = this.handleSubmit.bind(this);
+   this.handlePassword = this.handlePassword.bind(this);
+   this.handleName = this.handleName.bind(this)
+   
+   //   this.handleT = this.handleT(e).bind(this);
   }
   
   isAuthenticated() {
@@ -284,6 +287,8 @@ constructor(props) {
   }
   
   
+}).catch(res => {
+console.log(res.data);
   
   
   handleT(e) {
