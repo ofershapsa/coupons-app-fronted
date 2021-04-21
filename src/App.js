@@ -18,6 +18,9 @@ function App() {
             <GuardedRoute exact path="/admin" component={admin} />
             <GuardedRoute exact path="/company" component={company} />
             <GuardedRoute exact path="/customer" component={customer} />
+            <Route path="*"><h1>No match!!!</h1></Route>
+
+
         </Switch>
       </Router>
     </div>

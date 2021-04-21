@@ -8,6 +8,7 @@ function GuardedRoute(props) {
   //const auth = useContext(AppCtx);
   const { component: Component, ...restProps } = props;
   console.log(localStorage.getItem("authorization"));
+  console.log("hello world")
   return (
     <Route
       {...restProps}
