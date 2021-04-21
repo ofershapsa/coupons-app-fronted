@@ -121,7 +121,7 @@ function useTokenApi() {
             console.log(res.data);
             localStorage.setItem("authorization", res.data.token);
             if (res.data.token != null) {
-              history.push(state.type)
+              history.push(`/${state.type}`)
         }
   
            
