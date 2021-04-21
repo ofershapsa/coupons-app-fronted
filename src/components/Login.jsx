@@ -81,9 +81,7 @@ function apiReducer(state, action) {
             isLoading: false,
             data: action.payload,
             error: null,
-            username: action.payload.username,
-            password: action.payload.password,
-            type: action.payload.type
+           
         }
     }
     if (state.isLoading && action.type === "ERROR") {
@@ -97,6 +95,9 @@ function apiReducer(state, action) {
         return {
             ...state,
             isLoading: true,
+            username: action.payload.username,
+            password: action.payload.password,
+            type: action.payload.type
         }
     }
     return state;
@@ -116,36 +117,30 @@ function useTokenApi() {
     useEffect(() => {
         if (state.isLoading) {
           axios.post(endpoint , { username: state.username, password: state.password, type: state.type })
-      
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem("authorization", res.data.token);
-        if (res.data.token != null) {
-          this.authenticated = true;
-          console.log(this.isAuthenticated())
-          this.props.history.push(this.inputField.current.value)
-        }
-      }).catch(res => {
+          .then(resp => resp.json()).then(res => {
+            console.log("this is what I have", res)
+            
+        }).catch(res => {
         console.log(res.data);
       }
       )
         }
         if (!state.isLoading && state.data !== null) {
             localStorage.setItem("authorization", state.data)
-        }
-    }, [state, history ])
-
-    return {...state, dispatch}
-}
-
-function Login() {
-  const {isLoading, dispatch} = useTokenApi();
-  const nameRef = useRef(null);
-  const pswRef = useRef(null);
-  const typeRef = useRef(null);
-
-  return (
-    <div className="login">
+          }
+        }, [state, history ])
+        
+        return {...state, dispatch}
+      }
+      
+      function Login() {
+        const {isLoading, dispatch} = useTokenApi();
+        const nameRef = useRef(null);
+        const pswRef = useRef(null);
+        const typeRef = useRef(null);
+        
+        return (
+          <div className="login">
       <h2 className="header">Coupons App</h2>
 
       <div className="login-triangle"></div>
@@ -161,7 +156,7 @@ function Login() {
           const type = typeRef.current && typeRef.current.value 
           dispatch({ type: "FETCH", payload: {username, password, type} })
         }}
-      >
+        >
         <p>
           <input type="text" placeholder="Name" ref={nameRef} />
         </p>
@@ -188,20 +183,27 @@ function Login() {
       </form>
     </div>
   );
+
 }
+/*
+console.log(res.data);
+localStorage.setItem("authorization", res.data.token);
+if (res.data.token != null) {
+  history.push(this.inputField.current.value)
+  */
 
 /* state = {
-    type: '',
-    name: '',
-    password: '',
-    
-  }
+  type: '',
+  name: '',
+  password: '',
+  
+}
 */
 /*
-  constructor(props) {
-    super(props);
-    this.authenticated = false;
-    this.inputField = React.createRef();
+constructor(props) {
+  super(props);
+  this.authenticated = false;
+  this.inputField = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handleName = this.handleName.bind(this)
