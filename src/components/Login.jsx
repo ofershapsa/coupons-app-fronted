@@ -109,7 +109,7 @@ function useTokenApi() {
     const endpoint = "http://localhost:8080/authenticate";
    
     useEffect(() => {
-        if (localStorage.getItem("authorization")) {
+        if (localStorage.getItem("authorization") ) {
             history.push("/");
         }
     }, [history])
@@ -121,6 +121,7 @@ function useTokenApi() {
             console.log(res.data);
             localStorage.setItem("authorization", res.data.token);
             if (res.data.token != null) {
+
               history.push(`/${state.type}`)
         }
   

@@ -1,18 +1,19 @@
 
-import React, { useContext } from "react";
-import AppCtx from "./Context";
+//import React, { useContext } from "react";
+//import AppCtx from "./Context";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./components/Login.jsx";
 
 function GuardedRoute(props) {
-  const auth = useContext(AppCtx);
+  //const auth = useContext(AppCtx);
   const { component: Component, ...restProps } = props;
-  console.log(auth);
+  console.log(localStorage.getItem("authorization"));
   return (
     <Route
       {...restProps}
       render={(routeProps) => {
-        return auth ? <Component {...routeProps} /> : <Redirect to="/" />;
+        return  localStorage.getItem("authorization") !== undefined
+        ? <Component {...routeProps} /> : <Redirect to="/" />;
       }}
     />
   );
