@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import 'bootstrap/dist/css/bootstrap.css';
 import "./App.css";
 import Login from "./components/Login.jsx";
-import company from "./components/company.jsx";
-import customer from "./components/customer.jsx";
+import company from "./components/Company.jsx";
+import customer from "./components/Customer.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import admin from "./components/admin.jsx";
+import admin from "./components/Admin.jsx";
 import GuardedRoute from "./components/GuardedRoute.js";
 
 function App() {

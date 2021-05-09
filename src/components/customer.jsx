@@ -1,7 +1,5 @@
 import React from "react"
-export default class customer extends React.Component{
-   
-  render(){
+function Customer(){
   return(
   <div>
 <h3> customer</h3>
@@ -9,9 +7,6 @@ export default class customer extends React.Component{
   </div>
   
   );
-  
-  }
-  
-  
-  
-  }
+} 
+
+export default Customer;

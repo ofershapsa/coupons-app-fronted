@@ -2,7 +2,7 @@ import React, { useRef, useReducer, useEffect } from "react";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 import {useHistory} from "react-router";
-import AppCtx from "../Context";
+
 
 //import Select from "react-bootstrap-select"
 //import { Link } from 'react-router-dom';
@@ -143,7 +143,13 @@ function useTokenApi() {
         const nameRef = useRef(null);
         const pswRef = useRef(null);
         const typeRef = useRef(null);
+        useEffect(() => {
+          if (typeRef.current) {
+          console.log("this the current value", typeRef.current.value);
+          }
+          }, [typeRef])
         
+
         return (
           <div className="login">
       <h2 className="header">Coupons App</h2>
@@ -172,7 +178,7 @@ function useTokenApi() {
         <p>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Control as="select" custom ref={typeRef }onChange={() => console.log(typeRef.current && typeRef.current.value)} >
+              <Form.Control as="select" custom ref={typeRef }onChange={() => console.log(typeRef.current && typeRef.current.value)}  >
 
                 <option disabled>Select Type</option>
                 <option value="ADMIN">Admin</option>
