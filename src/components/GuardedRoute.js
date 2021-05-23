@@ -12,7 +12,7 @@ function GuardedRoute(props) {
     <Route
       {...restProps}
       render={(routeProps) => {
-        return  localStorage.getItem("authorization") !== undefined
+        return  localStorage.getItem("authorization") !== null
         ? <Component {...routeProps} /> : <Redirect to="/" />;
       }}
     />

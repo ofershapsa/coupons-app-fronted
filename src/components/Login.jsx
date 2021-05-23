@@ -117,7 +117,7 @@ function useTokenApi() {
     
     useEffect(() => {
       if (state.isLoading) {
-        axios.post(endpoint , { username: state.username, password: state.password, type: state.type })
+        axios.post(endpoint, { username: state.username, password: state.password, type: state.type })
         .then(res => {
           console.log(res.data);
           localStorage.setItem("authorization", res.data.token);
@@ -127,7 +127,7 @@ function useTokenApi() {
         }
   
            
-          }) . catch(err => console.log(err))
+          }).catch(err => console.log(err))
         
         }
         if (!state.isLoading && state.data !== null) {
@@ -205,6 +205,7 @@ if (res.data.token != null) {
   */
  
  /* state = {
+   
    type: '',
    name: '',
    password: '',

@@ -6,12 +6,11 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
 //  function componentDidMount(){
  //   const jwtToken = localStorage.getItem("authorization");
  // }
- // function handleLogout() {
- //   localStorage.clear();
- //   window.location.href = "/";
- // }
-  
-
+  function handleLogout() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
+ 
 
  // render(){
    function Admin(){
@@ -35,8 +34,9 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
     </Nav>
     <Nav>
       <Nav.Link href="#deets">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
-        Dank memes
+      <Nav.Link  eventKey={2} href="#memes" onClick={handleLogout}>
+        LOG OUT
+      
       </Nav.Link>
     </Nav>
   </Navbar.Collapse>
