@@ -6,7 +6,7 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
 //  function componentDidMount(){
  //   const jwtToken = localStorage.getItem("authorization");
  // }
-  function handleLogout() {
+  function handleLogout() { 
     localStorage.clear();
     window.location.href = "/";
   }
