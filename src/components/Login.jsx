@@ -2,7 +2,7 @@ import React, { useRef, useReducer, useEffect } from "react";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 import {useHistory} from "react-router";
-
+import Cookies from 'js-cookie';
 
 //import Select from "react-bootstrap-select"
 //import { Link } from 'react-router-dom';
@@ -110,7 +110,7 @@ function useTokenApi() {
     const endpoint = "http://localhost:8080/authenticate";
    
     useEffect(() => {
-      if (localStorage.getItem("authorization") ) {
+      if ( Cookies.get("token")) {
         history.push("/");
       }
     }, [history])
@@ -120,9 +120,10 @@ function useTokenApi() {
         axios.post(endpoint, { username: state.username, password: state.password, type: state.type })
         .then(res => {
           console.log(res.data);
-          localStorage.setItem("authorization", res.data.token);
+         
+          Cookies.set('token', res.data.token);
           if (res.data.token != null) {
-            
+          
               history.push(`/${state.type}`)
         }
   

@@ -1,5 +1,5 @@
 import React from "react"
-
+import Cookies from 'js-cookie';
 import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
 
   
@@ -7,13 +7,15 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
  //   const jwtToken = localStorage.getItem("authorization");
  // }
   function handleLogout() { 
-    localStorage.clear();
+   // localStorage.clear();
+   Cookies.remove("token");
     window.location.href = "/";
   }
  
 
  // render(){
    function Admin(){
+   
   return(
   <div>
 
@@ -22,7 +24,7 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link href="#features">Features</Nav.Link>
+      <Nav.Link href="/CompaniesList">Companies list</Nav.Link>
       <Nav.Link href="#pricing">Pricing</Nav.Link>
       <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

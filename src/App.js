@@ -8,6 +8,7 @@ import customer from "./components/Customer.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import admin from "./components/Admin.jsx";
 import GuardedRoute from "./components/GuardedRoute.js";
+import CompaniesList from "./components/CompaniesList.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <GuardedRoute exact path="/admin" component={admin} />
             <GuardedRoute exact path="/company" component={company} />
             <GuardedRoute exact path="/customer" component={customer} />
+            <GuardedRoute exact path="/companiesList" component={CompaniesList} />
            
             <Route path="*"><h1>No match!!!</h1></Route>
 
