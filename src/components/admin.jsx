@@ -1,6 +1,7 @@
 import React from "react"
 import Cookies from 'js-cookie';
-import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
+//import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
+//import NavBar from './AdminNavBar.jsx';
 
   
 //  function componentDidMount(){
@@ -18,7 +19,15 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
    
   return(
   <div>
+    
 
+  </div>
+  
+  );
+}
+
+export default Admin;
+ /*
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Navbar.Brand href="#home">Admin-Page</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -43,10 +52,4 @@ import { Table,Nav,Navbar,NavDropdown } from 'react-bootstrap';
     </Nav>
   </Navbar.Collapse>
 </Navbar>
-  </div>
-  
-  );
-}
-
-export default Admin;
- 
+*/

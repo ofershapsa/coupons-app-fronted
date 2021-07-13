@@ -2,7 +2,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie';
-
+import NavBar from './AdminNavBar.jsx';
 
 function GuardedRoute(props) {
   //const auth = useContext(AppCtx);
@@ -13,8 +13,13 @@ function GuardedRoute(props) {
     <Route
       {...restProps}
       render={(routeProps) => {
-        return  Cookies.get("token") !== undefined
-        ? <Component {...routeProps} /> : <Redirect to="/" />;
+        return  Cookies.get("token") !== undefined 
+        ? 
+        <>
+        <NavBar/>
+        <Component {...routeProps} /> 
+        </>
+        : <Redirect to="/" />;
       }}
     />
   );
