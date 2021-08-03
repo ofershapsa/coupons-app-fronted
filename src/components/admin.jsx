@@ -18,7 +18,7 @@ import Cookies from 'js-cookie';
    function Admin(){
    
   return(
-  <div>
+  <div  className = "adminHomePic">
     
 
   </div>

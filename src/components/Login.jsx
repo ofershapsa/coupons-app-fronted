@@ -132,7 +132,7 @@ function useTokenApi() {
         
         }
         if (!state.isLoading && state.data !== null) {
-          localStorage.setItem("authorization", state.data)
+          Cookies.set("token", state.data)
         }
       }, [state, history ])
       

@@ -1,25 +1,23 @@
 import React,{ useState, useEffect } from "react"
 import { Table } from 'react-bootstrap';
-import CompanyRow from "./CompanyRow"
+import CustomerRow from "./CustomerRow"
 import axios from "axios";
 import { jwtToken } from "../interceptors";
 import { BsFillXSquareFill } from 'react-icons/bs';
-
 function handleLogout() { 
-   window.location.href = "/admin";
- }
+    window.location.href = "/admin";
+  }
 
-
-function CompaniesList(){
-  const [compenies, setCompenies] = useState({
-   companies: []
+function CustomersList(){
+  const [customers, setCustomers] = useState({
+   customers: []
   });
-  const endpoint ="http://localhost:8080/admin/getAllCompanies"
+  const endpoint ="http://localhost:8080/admin/getAllCustomers"
   useEffect(() => {
     //  e.preventDefault();
     axios.get(endpoint)
     .then(response =>{
-      setCompenies({ companies: response.data })
+      setCustomers({ customers: response.data })
       console.log(response.data)
       //console.log(jwtToken)
     //   console.log(companies.companies)
@@ -33,7 +31,7 @@ function CompaniesList(){
 
   return(
   <div  class= "table-responsive"> 
-<h3> CompaniesList </h3>
+<h3> CustomersList</h3>
 <BsFillXSquareFill className="exitIcon" onClick={handleLogout} />
 <Table striped bordered hover variant="dark">
   <thead>
@@ -41,8 +39,7 @@ function CompaniesList(){
             
     <tr>
       <th>ID</th>
-      <th>Company Name</th>
-      <th>Email</th>
+      <th>Customer Name</th>
       <th>Password</th>
     </tr>
         
@@ -50,8 +47,8 @@ function CompaniesList(){
 
   <tbody>
 
-   {compenies.companies.map(company => (
-              <CompanyRow key={company.id} company={company}  />
+  {customers.customers.map(customer => (
+              <CustomerRow key={customer.id} customer={customer}  />
             ))}
   </tbody>
 </Table>
@@ -61,4 +58,4 @@ function CompaniesList(){
   );
 } 
 
-export default CompaniesList;
+export default CustomersList;

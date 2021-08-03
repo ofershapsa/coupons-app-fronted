@@ -134,3 +134,14 @@ body {
 .login input[type="submit"]:focus {
   border-color: #05a;
 }
+
+
+.exitIcon{
+ position: absolute; 
+ right: 0px;
+ top:65px ;
+}
+
+.adminHomePic{
+  background-image: url("./pic.jpg");
+}
